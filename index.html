@@ -1,9 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Électricien du Sud - Dépannage & Petits Travaux</title>
-    <!-- C'est cette ligne qu'il manquait pour appliquer le style -->
+    <!-- Lien vers votre fichier CSS -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -11,13 +12,13 @@
     <!-- Titre et présentation -->
     <h1>Électricien du Sud</h1>
     
-    <!-- L'image de l'électricien -->
-    <img src="electricien.png.jfif" alt="Électricien du Sud en train de travailler" style="max-width: 200px !important; width: 100%; height: auto !important; display: block; margin: 20px auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+    <!-- L'image de l'électricien (Vérifiez bien que votre image s'appelle electricien.jpg ou electricien.png) -->
+    <img src="electricien.jpg" alt="Électricien du Sud en train de travailler" style="max-width: 200px !important; width: 100%; height: auto !important; display: block; margin: 20px auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
 
-    <p>Dépannage d'urgence, petits travaux et remplacement de matériel défectueux .</p>
+    <p>Dépannage d'urgence, petits travaux et remplacement de matériel défectueux.</p>
 
-    <!-- Bouton d'appel rapide -->
-    <p><strong>Urgence ou devis ?</strong> <a href="tel:06508398">Appelez-moi directement</a></p>
+    <!-- Bouton d'appel rapide (Mettez vos 10 chiffres ici) -->
+    <p><strong>Urgence ou devis ?</strong> <a href="tel:0612345678">Appelez-moi directement</a></p>
 
     <hr>
 
@@ -25,38 +26,41 @@
     <h2>Demande de contact</h2>
     <form action="https://formspree.io/f/xgaaoawz" method="POST" onsubmit="return validerFormulaire()">
         <p>
-            <label for="name">Nom :</label>
+            <label for="name">Nom :</label><br>
             <input type="text" id="name" name="name" required>
         </p>
         <p>
-            <label for="phone">Téléphone :</label>
-            <input type="tel" id="phone" name="phone" required>
+            <label for="phone">Téléphone :</label><br>
+            <input type="tel" id="phone" name="phone" placeholder="Ex: 06 12 34 56 78" required>
         </p>
         <p>
             <label for="message">Votre besoin :</label><br>
-            <textarea id="message" name="message" rows="4" cols="30" placeholder="Ex: Remplacement de prise, panne de disjoncteur..."></textarea>
+            <textarea id="message" name="message" rows="4" cols="30" placeholder="Ex: Remplacement de prise, panne de disjoncteur..." required></textarea>
         </p>
         <button type="submit">Envoyer la demande</button>
     </form>
 
     <script>
     function validerFormulaire() {
-      var nom = document.getElementById("name").value;
-      var telephone = document.getElementById("phone").value;
-      var besoin = document.getElementById("message").value;
-      var regexTelephone = /^[0-9]{10}$/;
+        var nom = document.getElementById("name").value.trim();
+        var telephone = document.getElementById("phone").value.trim();
+        var besoin = document.getElementById("message").value.trim();
+        
+        // Nettoyer le numéro pour enlever les espaces, points ou tirets saisis par l'utilisateur
+        var telephoneNettoye = telephone.replace(/[\s\.-]/g, '');
+        var regexTelephone = /^[0-9]{10}$/;
 
-      if (nom === "" || telephone === "" || besoin === "") {
-        alert("Veuillez remplir tous les champs.");
-        return false;
-      }
+        if (nom === "" || telephone === "" || besoin === "") {
+            alert("Veuillez remplir tous les champs.");
+            return false;
+        }
 
-      if (!regexTelephone.test(telephone)) {
-        alert("Veuillez entrer un numéro de téléphone valide à 10 chiffres.");
-        return false;
-      }
+        if (!regexTelephone.test(telephoneNettoye)) {
+            alert("Veuillez entrer un numéro de téléphone valide à 10 chiffres.");
+            return false;
+        }
 
-      return true;
+        return true; // Le formulaire s'envoie vers Formspree
     }
     </script>
 </body>
