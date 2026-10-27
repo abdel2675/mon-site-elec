@@ -1,54 +1,63 @@
-	<!DOCTYPE html>
-<html lang="fr">
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="utf-8" />
-    <link rel="stylesheet" href="style.css" />
-    <title>Premiers tests du CSS - King</title>
+    <meta charset="UTF-8">
+    <title>Électricien du Sud - Dépannage & Petits Travaux</title>
+    <!-- C'est cette ligne qu'il manquait pour appliquer le style -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <p style="color: blue;">Bonjour et bienvenue sur mon site !</p>
+    <!-- Titre et présentation -->
+    <h1>Électricien du Sud</h1>
+    
+    <!-- L'image de l'électricien -->
+    <img src="electricien.png.jfif" alt="Électricien du Sud en train de travailler" style="max-width: 200px !important; width: 100%; height: auto !important; display: block; margin: 20px auto; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
 
-    <p>Bonjour <br /> 
-    <span>et bienvenue sur mon site ! <br />
-    Ceci est mon premier test alors soyez indulgents s'il vous plaît, j'apprends petit à petit comment cela marche. <br />
-    Pour l'instant c'est un peu vide, mais revenez dans 2-3 jours quand j'aurai appris un peu plus de choses, je vous assure que vous allez être surpris !</span></p>
+    <p>Dépannage d'urgence, petits travaux et remplacement de matériel défectueux .</p>
 
-    <!-- Pour l'image, assurez-vous que electricien.png est dans le même dossier -->
-    <p>
-        <img src="electricien.png" alt="Électricien" />
-    </p>
+    <!-- Bouton d'appel rapide -->
+    <p><strong>Urgence ou devis ?</strong> <a href="tel:06508398">Appelez-moi directement</a></p>
 
-    <ul>
-        <li>Installation</li>
-        <li>Dépannage</li>
-        <li>Remise aux normes</li>
-    </ul>
+    <hr>
 
-    <h1>Ma journée</h1>
-    <ol>
-        <li>Je me lève.</li>
-        <li>Je mange et je bois.</li>
-        <li>Je retourne me coucher.</li>
-        <li>Liste par numéro</li>
-    </ol>
+    <!-- Formulaire de contact -->
+    <h2>Demande de contact</h2>
+    <form action="https://formspree.io/f/xgaaoawz" method="POST" onsubmit="return validerFormulaire()">
+        <p>
+            <label for="name">Nom :</label>
+            <input type="text" id="name" name="name" required>
+        </p>
+        <p>
+            <label for="phone">Téléphone :</label>
+            <input type="tel" id="phone" name="phone" required>
+        </p>
+        <p>
+            <label for="message">Votre besoin :</label><br>
+            <textarea id="message" name="message" rows="4" cols="30" placeholder="Ex: Remplacement de prise, panne de disjoncteur..."></textarea>
+        </p>
+        <button type="submit">Envoyer la demande</button>
+    </form>
 
-    <p><a href="http://gecko.ksm-production.com:9083/" target="_blank">Site geko</a></p>
+    <script>
+    function validerFormulaire() {
+      var nom = document.getElementById("name").value;
+      var telephone = document.getElementById("phone").value;
+      var besoin = document.getElementById("message").value;
+      var regexTelephone = /^[0-9]{10}$/;
 
-    <p>Voici une photo que j'ai prise lors de mes dernières vacances à la montagne :</p>
-    <p>
-        <img src="impdochtml_image.png" alt="1ère image" />
-    </p>
+      if (nom === "" || telephone === "" || besoin === "") {
+        alert("Veuillez remplir tous les champs.");
+        return false;
+      }
 
-    <figure>
-        <img src="blocnotes.png" alt="Bloc-Notes" />
-        <figcaption>Le logiciel Bloc-Notes</figcaption>
-    </figure>
+      if (!regexTelephone.test(telephone)) {
+        alert("Veuillez entrer un numéro de téléphone valide à 10 chiffres.");
+        return false;
+      }
 
-    <p>Voici une 2ème image :<br />
-    <img src="mon_image.png" alt="2ème image" /></p>
-
-    <p>Bonjour. Souhaitez-vous consulter <a href="page2.html">ma page html 2</a> ?</p>
-
+      return true;
+    }
+    </script>
 </body>
 </html>
