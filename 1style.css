@@ -23,3 +23,12 @@ h1
 {
 color: maroon;
 }
+/* Force l'alignement à gauche pour le titre et l'image */
+h1 {
+    text-align: left !important;
+}
+
+img {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+}
