@@ -60,10 +60,10 @@ img {
 }
 /* Force l'alignement à gauche pour le titre et l'image */
 h1 {
-    text-align: left !important;
+    text-align: left !importan;
 }
 
 img {
     margin-left: 0 !important;
-    margin-right: auto !important;
+    margin-right: auto !importan;
 }
