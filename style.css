@@ -58,3 +58,12 @@ img {
     display: block;
     margin: 20px auto;
 }
+/* Force l'alignement à gauche pour le titre et l'image */
+h1 {
+    text-align: left !important;
+}
+
+img {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+}
